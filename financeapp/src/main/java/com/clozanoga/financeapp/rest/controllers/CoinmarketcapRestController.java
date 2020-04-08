@@ -1,4 +1,4 @@
-package com.clozanoga.financeapp.web;
+package com.clozanoga.financeapp.rest.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,19 +10,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.clozanoga.financeapp.dtos.coinmarketcap.MarketDataDTO;
-import com.clozanoga.financeapp.services.CoinmarketcapService;
-import com.clozanoga.financeapp.services.MarketService;
+import com.clozanoga.financeapp.manager.CoinmarketcapServiceImpl;
+import com.clozanoga.financeapp.manager.MarketService;
 
 @RestController
 @CrossOrigin
 @RequestMapping("/api/markets")
-public class CoinmarketcapController {
+public class CoinmarketcapRestController {
 
-	private CoinmarketcapService coinmarketcapService;
+	private CoinmarketcapServiceImpl coinmarketcapService;
 	private MarketService marketService;
 	
 	@Autowired
-	public CoinmarketcapController(CoinmarketcapService coinmarketcapService, MarketService marketService) {
+	public CoinmarketcapRestController(CoinmarketcapServiceImpl coinmarketcapService, MarketService marketService) {
 		this.coinmarketcapService = coinmarketcapService;
 		this.marketService = marketService;
 	}

@@ -1,4 +1,4 @@
-package com.clozanoga.financeapp.services;
+package com.clozanoga.financeapp.manager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,10 +11,10 @@ import com.clozanoga.financeapp.dtos.coinmarketcap.MarketDataDTO;
 @Service
 public class MarketService {
 
-	private CoinmarketcapService coinmarketcapService;
+	private CoinmarketcapServiceImpl coinmarketcapService;
 		
 	@Autowired
-	public MarketService(CoinmarketcapService coinmarketcapService) {
+	public MarketService(CoinmarketcapServiceImpl coinmarketcapService) {
 		this.coinmarketcapService = coinmarketcapService;
 	}
 	

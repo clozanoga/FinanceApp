@@ -1,4 +1,4 @@
-package com.clozanoga.financeapp.services;
+package com.clozanoga.financeapp.manager;
 
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
@@ -18,14 +18,14 @@ import com.clozanoga.financeapp.domain.coinmarketcap.MarketData;
 import com.clozanoga.financeapp.dtos.coinmarketcap.MarketDataDTO;
 
 @Service
-public class CoinmarketcapService {
+public class CoinmarketcapServiceImpl {
 
 	private static final String apiKey = "2d7dbec1-0aa2-4d6e-82ad-8a5e20ca1138";
 	
 	private RestTemplate restTemplate;
 	
 	@Autowired
-	public CoinmarketcapService(RestTemplateBuilder builder) {
+	public CoinmarketcapServiceImpl(RestTemplateBuilder builder) {
 		this.restTemplate = builder.build();
 	}
 	
