@@ -22,7 +22,7 @@ public class PortfolioService {
 	}
 	
 	public Portfolio saveOrUpdatePortfolio(Portfolio portfolio) {
-		portfolio.setId(sequenceGeneratorService.generateSequence("portfolios_sequence"));
+//		portfolio.setId(sequenceGeneratorService.generateSequence("portfolios_sequence"));
 		portfolio.setCreatedAt(LocalDate.now());
 		return portfolioRepository.save(portfolio);
 	}

@@ -1,14 +1,15 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { createPortfolio } from "../../actions/portfolioActions";
 
 class AddPortfolio extends Component {
   constructor() {
     super();
 
     this.state = {
-      portfolioName: "",
-      portfolioIdentifier: "",
+      name: "",
       description: "",
-      creation_date: ""
     };
 
     this.onChange = this.onChange.bind(this);
@@ -22,13 +23,10 @@ class AddPortfolio extends Component {
   onSubmit(e) {
     e.preventDefault();
     const newPortfolio = {
-      portfolioName: this.state.portfolioName,
-      portfolioIdentifier: this.state.portfolioIdentifier,
+      name: this.state.name,
       description: this.state.description,
-      creation_date: this.state.creation_date
     };
-
-    console.log(newPortfolio);
+    this.props.createPortfolio(newPortfolio, this.props.history);
   }
 
   render() {
@@ -54,37 +52,17 @@ class AddPortfolio extends Component {
                     type="text"
                     className="form-control form-control-lg "
                     placeholder="Portfolio Name"
-                    name="portfolioName"
-                    value={this.state.portfolioName}
-                    onChange={this.onChange}
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    className="form-control form-control-lg"
-                    placeholder="Unique Portfolio ID"
-                    name="portfolioIdentifier"
-                    value={this.state.portfolioIdentifier}
+                    name="name"
+                    value={this.state.name}
                     onChange={this.onChange}
                   />
                 </div>
                 <div className="form-group">
                   <textarea
-                    class="form-control form-control-lg"
+                    className="form-control form-control-lg"
                     placeholder="Portfolio Description"
                     name="description"
                     value={this.state.description}
-                    onChange={this.onChange}
-                  />
-                </div>
-                <h6>Creation Date</h6>
-                <div className="form-group">
-                  <input
-                    type="date"
-                    className="form-control form-control-lg"
-                    name="creationDate"
-                    value={this.state.creation_date}
                     onChange={this.onChange}
                   />
                 </div>
@@ -102,4 +80,8 @@ class AddPortfolio extends Component {
   }
 }
 
-export default AddPortfolio;
+AddPortfolio.propTypes = {
+  createPortfolio: PropTypes.func.isRequired,
+};
+
+export default connect(null, { createPortfolio })(AddPortfolio);
